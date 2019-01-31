@@ -27,10 +27,9 @@ public class BasicTests {
 
     @Test
     public void loginAndSelectItemTest() {
-        CartPage cartPage = loginPage.login("standard_user", "secret_sauce")
-             .addTheFirstItemToCart().goToCartPage();
-        assertTrue(cartPage.isTextPresent("Sauce Labs Backpack"));
-        assertTrue(cartPage.isTextPresent("29.99"));
+        // code here
+        assertTrue();
+        assertTrue();
     }
 
 }
