@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="all-tests" parallel="classes" thread-count="1">
+    <listeners>
+        <listener class-name="com.enfuce.testautomation.listeners.ScreenshotListener" />
+    </listeners>
+    <test name="all-tests-in-suite">
+        <classes>
+            <class name="com.enfuce.testautomation.tests.BasicTests" />
+        </classes>
+    </test>
+</suite>

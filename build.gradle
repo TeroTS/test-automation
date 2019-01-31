@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+}
+
+group 'com.enfuce.testautomation'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'commons-io', name: 'commons-io', version: '2.6'
+    testCompile 'org.testng:testng:6.10'
+    testCompile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
+}
+
+def all = project.hasProperty("all")
+def failed = project.hasProperty("failed")
+
+test {
+    useTestNG() {
+        //set TestNG output dir
+        outputDirectory = file("$project.buildDir//testng-output")
+        //required to turn on TestNG reports
+        useDefaultListeners = true
+        if (all) {
+            suites 'src/test/resources/testng.xml'
+        }
+        if (failed) {
+            suites 'build/testng-output/testng-failed.xml'
+        }
+        systemProperty "env", findProperty("env")
+    }
+}
